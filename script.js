@@ -15,26 +15,24 @@ let averageHeight,
   heightTrim,
   heightString;
 
-let weightSum = 0;
-let heightSum = 0;
-let item = 0;
+function calulateAverage(dataSet) {
+  let weightSum = 0;
+  let heightSum = 0;
 
-//fix pokemon 
-
-function calulateAverage(pokemon) {
-  for (let i = 0; i < pokemon_array_length; i++) {
-    //ParseINT data
+  for (let i = 0; i < dataSet.length; i++) {
+    //Step 1. ParseINT data
 
     //Weight
-    weightString = pokemon[i].weight.replace("kg", "");
+    weightString = dataSet[i].weight.replace("kg", "");
     weightTrim = weightString.trim();
     cleanWeight = parseFloat(weightTrim);
 
     //height
-    heightString = pokemon[i].height.replace("m", "");
+    heightString = dataSet[i].height.replace("m", "");
     heightTrim = heightString.trim();
     cleanHeight = parseFloat(heightTrim);
 
+    //Step 2. Calculate Sum
     //adds each pokemon weight & height to sum through loop
     weightSum += cleanWeight;
     heightSum += cleanHeight;
@@ -47,21 +45,28 @@ function calulateAverage(pokemon) {
   return averageHeight, averageWeight; //expected output: Height: 1.19 Weight: 46.0
 }
 
-function calculateMinMax(pokemon) {
+function calculateMinMax(dataSet) {
 
+  //Step 1. Create Blank Array to Place Parsed Data into 
   let array = [];
-  for (let i = 0; i < pokemon.length ; i++) {
-    let item = parseFloat(pokemon[i].avg_spawns);
+
+  //Step 2. Loop Parsed Data Set into Blank Array 
+  for (let i = 0; i < dataSet.length ; i++) {
+    let item = parseFloat(dataSet[i].avg_spawns);
     array.push(item);
   }
-  console.log("H???????????????????????????????????????????????????????????????????????????????????????????????");
-  console.log(Math.max(...array));
+  //Step 3. Return 
+
+  maxAverageSpawns = Math.max(...array);
+  minAverageSpawns = Math.min(...array);
+
+  return maxAverageSpawns , minAverageSpawns;
 }
 
 calculateMinMax(pokemon);
-//calulateAverage(pokemon);
+calulateAverage(pokemon);
 
-//-------------------------------------------------------------------------------------->
+//-------------------- HTML ----------------------------------------------------------------->
 html = `<p>Most Common Pokemon Type:<br>
       Average Pokemon Height: ${averageHeight} m<br>
       Average Pokemon Weight: ${averageWeight} kg<br>
@@ -69,7 +74,7 @@ html = `<p>Most Common Pokemon Type:<br>
       Lowest Spawn Chance:
     </p>
   `;
-//grass, fire
+
 for (let i = 0; i < pokemon.length; i++) {
   html += `<h3>${pokemon[i].name} (${pokemon[i].num})</h3>`;
 

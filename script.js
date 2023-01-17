@@ -71,6 +71,8 @@ calulateAverage(pokemon);
 //add HTML to output
 
 //Block For PokeMon Statistics
+
+function functionFun(a) {
 html = `<p>
       <strong>Average Pokemon Height:</strong> ${averageHeight} m<br>
       <strong>Average Pokemon Weight:</strong> ${averageWeight} kg<br>
@@ -118,10 +120,22 @@ for (let i = 0; i < pokemon.length; i++) {
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
       <li><strong>Multiplers:</strong> ${pokemon[i].multipliers}
       <li><strong>Weaknesses:</strong> ${pokemon[i].weaknesses}
-      <li><strong>Previous Evolution:</strong> ${pokemon[i].prev_evolution.name}
-      <li><strong>Next Evolution:</strong> ${pokemon[i].next_evolution.name}
+      <li><strong>Previous Evolution:</strong> ${pokemon[i].prev_evolution}
+      <li><strong>Next Evolution:</strong> ${pokemon[i].next_evolution}
       </p>
     `;
 }
+}
 
+function pokemonEvolutions(dataSet) {
+
+  for (let i = 0; i < dataSet.length; i++) {
+
+    console.log(dataSet[i].next_evolution[i].name);
+  }console.log(dataSet[i].next_evolution[i].name);
+}console.log(dataSet[i].next_evolution[i].name);
+}ZZ
+}
+
+pokemonEvolutions(pokemon);
 output.innerHTML = html;

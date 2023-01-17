@@ -48,58 +48,78 @@ function calulateAverage(dataSet) {
 }
 
 function calculateMinMax(dataSet) {
-
-  //Step 1. Create Blank Array to Place Parsed Data into 
+  //Step 1. Create Blank Array to Place Parsed Data into
   let array = [];
 
-  //Step 2. Loop Parsed Data Set into Blank Array 
-  for (let i = 0; i < dataSet.length ; i++) {
+  //Step 2. Loop Parsed Data Set into Blank Array
+  for (let i = 0; i < dataSet.length; i++) {
     let item = parseFloat(dataSet[i].avg_spawns);
     array.push(item);
   }
-  //Step 3. Return 
+  //Step 3. Return
 
   maxAverageSpawns = Math.max(...array);
   minAverageSpawns = Math.min(...array);
 
-  return maxAverageSpawns , minAverageSpawns;
+  return maxAverageSpawns, minAverageSpawns;
 }
 
 calculateMinMax(pokemon);
 calulateAverage(pokemon);
 
 //-------------------- HTML ----------------------------------------------------------------->
+//add HTML to output
+
+//Block For PokeMon Statistics
 html = `<p>
-      Average Pokemon Height: ${averageHeight} m<br>
-      Average Pokemon Weight: ${averageWeight} kg<br>
-      Highest Spawn Chance: ${maxAverageSpawns}<br>
-      Lowest Spawn Chance: ${minAverageSpawns}
+      <strong>Average Pokemon Height:</strong> ${averageHeight} m<br>
+      <strong>Average Pokemon Weight:</strong> ${averageWeight} kg<br>
+      <strong>Highest Spawn Chance:</strong> ${maxAverageSpawns}<br>
+      <strong>Lowest Spawn Chance:</strong> ${minAverageSpawns}
     </p>
   `;
 
+//Adds pokemon data to HTML Doc
+//Loop adds Pokemon's Name + Number
+//Expect Output: Bulbasaur (001)
 for (let i = 0; i < pokemon.length; i++) {
-  html += `<h3>${pokemon[i].name} (${pokemon[i].num})</h3>`;
+  html += `
+  <h2>Pokemon Data</h2>
+  <h3>${pokemon[i].name} (${pokemon[i].num})</h3> 
+  `; 
 
-  //Let LOL
+  //Creates Div boxes for each Pokemon Type
   for (let j = 0; j < data.pokemon[i].type.length; j++) {
-   html += `<div class="typebox"> ${pokemon[i].type[j]}</div>`;
+    html += `<div class="typebox"> ${pokemon[i].type[j]}</div>`;
   }
 
-  html +=`
+  //adds pictures + height + weight
+  html += `
   <img src="${pokemon[i].img}" alt="picture of ${pokemon[i].name}" width="auto" height="auto">
    <li><strong>Height:</strong> ${pokemon[i].height}
    <li><strong>Weight:</strong> ${pokemon[i].weight}
    `;
 
-  if (pokemon[i].candy_count == null) {
-    html += `<li><strong>Candy Type:</strong> ${pokemon[i].candy} `;
+  //Adds Pokemon Candy Count Data
+  if (pokemon[i].candy_count == null) { //IF NO CANDY Number print just candy name
+    html += `
+    <li><strong>Candy Type:</strong> ${pokemon[i].candy} 
+    `; //expect output: Candy Name or 'None'
   } else {
-    html += `<li><strong>Candy Type:</strong> ${pokemon[i].candy} (${pokemon[i].candy_count})`;
+    html += `
+    <li><strong>Candy Type:</strong> ${pokemon[i].candy} (${pokemon[i].candy_count})
+    `;  // expected output: Candy Name (#)
   }
 
-  html += `<li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
+  //Adds Rest of JSON Data
+  html += `
+      <li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
       <li><strong>Spawn Chance:</strong> ${pokemon[i].spawn_chance}
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
+      <li><strong>Multiplers:</strong> ${pokemon[i].multipliers}
+      <li><strong>Weaknesses:</strong> ${pokemon[i].weaknesses}
+      <li><strong>Previous Evolution:</strong> ${pokemon[i].prev_evolution.name}
+      <li><strong>Next Evolution:</strong> ${pokemon[i].next_evolution.name}
       </p>
     `;
 }

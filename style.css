@@ -1,0 +1,31 @@
+body {
+    background-color: #2b3151;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.block {
+    display: flex;
+    flex-direction:column;
+    width: 50%;
+    margin: auto;
+    padding: 10%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.182) 0px 10px 25px;
+    background-color:#313961;
+    color: white;
+}
+
+.typebox {
+    background-color: white;
+    font-weight: 500;
+    color: black;
+    border-radius: 15px;
+}
+p {
+    font-weight: 100;
+}
+
+h1, h3{
+    color: yellow
+}

@@ -13,7 +13,9 @@ let averageHeight,
   cleanWeight,
   cleanHeight,
   heightTrim,
-  heightString;
+  heightString,
+  maxAverageSpawns,
+  minAverageSpawns;
 
 function calulateAverage(dataSet) {
   let weightSum = 0;
@@ -67,11 +69,11 @@ calculateMinMax(pokemon);
 calulateAverage(pokemon);
 
 //-------------------- HTML ----------------------------------------------------------------->
-html = `<p>Most Common Pokemon Type:<br>
+html = `<p>
       Average Pokemon Height: ${averageHeight} m<br>
       Average Pokemon Weight: ${averageWeight} kg<br>
-      Highest Spawn Chance:<br>
-      Lowest Spawn Chance:
+      Highest Spawn Chance: ${maxAverageSpawns}<br>
+      Lowest Spawn Chance: ${minAverageSpawns}
     </p>
   `;
 

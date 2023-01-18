@@ -2,11 +2,14 @@ body {
     background-color: #2b3151;
     color: white;
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
+li {
+    padding: 5px;
+}
 .block {
-    display: flex;
-    flex-direction:column;
     width: 50%;
     margin: auto;
     padding: 10%;
@@ -16,11 +19,24 @@ body {
     color: white;
 }
 
+.typebox-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .typebox {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.615);
+    border: white solid 3px ;
     font-weight: 500;
     color: black;
     border-radius: 15px;
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+    
+}
+img {
+    display: block;
 }
 p {
     font-weight: 100;

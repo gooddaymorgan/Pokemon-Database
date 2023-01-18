@@ -152,17 +152,32 @@ function addHTML() {
     let weakString = weakData.toString();
     let weaknesses = weakString.replace(/,/g, " • ");
 
+  // Set to 'none' then if have object print 
+  
+    let prev_evolution = "none";
+    let next_evolution = "none";
+
+    if (pokemon[i].prev_evolution){
+
+      //Loop?
+      prev_evolution = pokemon[i].prev_evolution[0].name;
+
+    }
+
+
+
     //Adds Rest of JSON Data
     html += `
       <li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
       <li><strong>Spawn Chance:</strong> ${pokemon[i].spawn_chance}
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
       <li><strong>Weaknesses:</strong> ${weaknesses}
-      <li><strong>Previous Evolution:</strong> ${pokemon[i].prev_evolution}
-      <li><strong>Next Evolution:</strong> ${pokemon[i].next_evolution}
+      <li><strong>Previous Evolution:</strong> ${prev_evolution} 
+      <li><strong>Next Evolution:</strong> ${next_evolution}
       </p>
     `;
   }
+  //Sometimes no previous evolution
 }
 
 //Evolutions

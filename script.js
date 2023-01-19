@@ -85,9 +85,10 @@ function addHTML() {
   html = `<p>
       <strong>Average Pokemon Height:</strong> ${averageHeight} m<br>
       <strong>Average Pokemon Weight:</strong> ${averageWeight} kg<br>
-      <strong>Highest Spawn Chance:</strong> ${maxAverageSpawns}<br>
-      <strong>Lowest Spawn Chance:</strong> ${minAverageSpawns}
+      <strong>Highest Spawn Chance:</strong> ${maxAverageSpawns} %<br>
+      <strong>Lowest Spawn Chance:</strong> ${minAverageSpawns} %
     </p>
+    <h2>All Pokemon Data</h2>
   `;
 
   //----Step 2. Main loop adds Pokemon's infomation from dataset--->
@@ -187,7 +188,7 @@ function addHTML() {
     //Adds Rest of JSON Data
     html += `
       <li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
-      <li><strong>Spawn Chance:</strong> ${pokemon[i].spawn_chance}
+      <li><strong>Spawn Chance:</strong> ${pokemon[i].spawn_chance}%
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
       <li><strong>Weaknesses:</strong> ${weaknesses}
       <li><strong>Previous Evolution:</strong> ${prev_evolution} ${prev_evolution_num}

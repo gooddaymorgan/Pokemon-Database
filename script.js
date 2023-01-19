@@ -156,23 +156,39 @@ function addHTML() {
   
     let prev_evolution = "none";
     let next_evolution = "none";
+    let prev_evolution_num = "";
+
 
     if (pokemon[i].prev_evolution){
 
       //Loop?
       prev_evolution = pokemon[i].prev_evolution[0].name;
+      prev_evolution_num = pokemon[i].prev_evolution[0].num;
 
+      if (pokemon[i].prev_evolution[1]){
+
+        prev_evolution = pokemon[i].prev_evolution[1].name;
+        prev_evolution_num = pokemon[i].prev_evolution[1].num;
+      }
+      console.log(pokemon[i].prev_evolution[0].num);
+      //prev_evolution = pokemon[i].prev_evolution[h].name;
+      //prev_evolution_num = pokemon[i].prev_evolution[h].num;
+      //}
     }
 
+    // if (pokemon[i].next_evolution){
+
+    //   prev_evolution = pokemon[i].next_evolution[0].name;
 
 
+    // }
     //Adds Rest of JSON Data
     html += `
       <li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
       <li><strong>Spawn Chance:</strong> ${pokemon[i].spawn_chance}
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
       <li><strong>Weaknesses:</strong> ${weaknesses}
-      <li><strong>Previous Evolution:</strong> ${prev_evolution} 
+      <li><strong>Previous Evolution:</strong> ${prev_evolution} ${prev_evolution_num}
       <li><strong>Next Evolution:</strong> ${next_evolution}
       </p>
     `;
@@ -190,6 +206,8 @@ function addHTML() {
 //     }
 //   }
 // }
+
+
 
 addHTML();
 output.innerHTML = html;

@@ -46,10 +46,10 @@ p {
     font-weight: 100;
 }
 
-h1, h3{
-    color: yellow
+h1 , h2 {
+    color: white;
 }
 
-h2 {
-    color: rgb(13, 6, 47);
+h3 {
+    color: yellow
 }

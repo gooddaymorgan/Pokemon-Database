@@ -86,7 +86,7 @@ function addHTML() {
       <strong>Average Pokemon Height:</strong> ${averageHeight} m<br>
       <strong>Average Pokemon Weight:</strong> ${averageWeight} kg<br>
       <strong>Highest Spawn Chance:</strong> ${maxAverageSpawns} %<br>
-      <strong>Lowest Spawn Chance:</strong> ${minAverageSpawns} %
+      <strong>Lowest Spawn Chance:</strong> ${minAverageSpawns}%
     </p>
     <h2>All Pokemon Data</h2>
   `;
@@ -95,16 +95,20 @@ function addHTML() {
 
   //Expect Output: Bulbasaur (001)
   for (let i = 0; i < pokemon.length; i++) {
-    html += `<h3>${pokemon[i].name} (${pokemon[i].num})</h3> `;
-  
-    //---B. New Loop creates Div boxes for each Pokemon Type-->
-    for (let j = 0; j < data.pokemon[i].type.length; j++) {
-      html += `<div class="typebox"> ${pokemon[i].type[j]}</div>`;
-    }
-
-  //----Step 4. adds pictures + height + weight--->
+    html += `<h3>${pokemon[i].name} (${pokemon[i].num})</h3> 
+    `
+  //----Step 3. adds pictures --->
     html += `
       <img src="${pokemon[i].img}" alt="picture of ${pokemon[i].name}" width="auto" height="auto">
+      `;
+
+  //---Step 4. New Loop creates Div boxes for each Pokemon Type-->
+    for (let j = 0; j < data.pokemon[i].type.length; j++) {
+          html += `<div class="typebox"> ${pokemon[i].type[j]}</div>`;
+    }
+
+  //--Step 4.5 Add height + weight to HTML ---->
+    html += `
       <li><strong>Height:</strong> ${pokemon[i].height}
       <li><strong>Weight:</strong> ${pokemon[i].weight}
     `;

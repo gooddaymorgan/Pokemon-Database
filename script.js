@@ -4,7 +4,6 @@ const output = document.getElementById("output"); //for DOM to append to
 
 //variables
 let html = "";
-let pokemon_array_length = data.pokemon.length; //Wschools says this is faster
 let pokemon = data.pokemon;
 
 //Calculations Global Variables
@@ -152,36 +151,39 @@ function addHTML() {
     let weakString = weakData.toString();
     let weaknesses = weakString.replace(/,/g, " • ");
 
-  // Set to 'none' then if have object print 
+  //-----Step 8: Find Evolutions ------->
+
+  // Set to 'none' then we check to see if the dataset has data in the arrays
+  //If (have data) print out correct evolution
   
     let prev_evolution = "none";
     let next_evolution = "none";
     let prev_evolution_num = "";
+    let next_evolution_num = "";
 
-
+    //If you have data in this JSON dataset change variables
     if (pokemon[i].prev_evolution){
 
-      //Loop?
       prev_evolution = pokemon[i].prev_evolution[0].name;
       prev_evolution_num = pokemon[i].prev_evolution[0].num;
 
+      //If you have data at the [1] place- replace previous variables
       if (pokemon[i].prev_evolution[1]){
 
         prev_evolution = pokemon[i].prev_evolution[1].name;
         prev_evolution_num = pokemon[i].prev_evolution[1].num;
       }
-      console.log(pokemon[i].prev_evolution[0].num);
-      //prev_evolution = pokemon[i].prev_evolution[h].name;
-      //prev_evolution_num = pokemon[i].prev_evolution[h].num;
-      //}
     }
 
-    // if (pokemon[i].next_evolution){
+    //Does Previous Statement above but with 'next evolution' dataset
+    if (pokemon[i].next_evolution){
 
-    //   prev_evolution = pokemon[i].next_evolution[0].name;
+      next_evolution = pokemon[i].next_evolution[0].name;
+      next_evolution_num = pokemon[i].next_evolution[0].num;
 
+    }
 
-    // }
+  //------Step 9. Add Rest of JSON data ------>
     //Adds Rest of JSON Data
     html += `
       <li><strong>Egg Hatch Distance:</strong> ${pokemon[i].egg}
@@ -189,25 +191,11 @@ function addHTML() {
       <li><strong>Average Spawns:</strong> ${pokemon[i].avg_spawns}
       <li><strong>Weaknesses:</strong> ${weaknesses}
       <li><strong>Previous Evolution:</strong> ${prev_evolution} ${prev_evolution_num}
-      <li><strong>Next Evolution:</strong> ${next_evolution}
+      <li><strong>Next Evolution:</strong> ${next_evolution} ${next_evolution_num}
       </p>
     `;
   }
-  //Sometimes no previous evolution
 }
-
-//Evolutions
-// function pokemonEvolutions(dataSet) {
-//   for (let i = 0; i < data.pokemon.length; i++) {
-//     console.log("Hiiiiiiiiiiiiiiii");
-
-//     for (let j = 0; j < pokemon[i].next_evolution.length; j++) {
-//       console.log(dataSet[i].next_evolution[j].name);
-//     }
-//   }
-// }
-
-
 
 addHTML();
 output.innerHTML = html;

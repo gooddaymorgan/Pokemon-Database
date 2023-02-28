@@ -6,13 +6,13 @@
 - Designed to practice javascript and JSON 
 
 # About This Project
-This project was created to take JSON data and turn it into a website. This was used as practice for my class on advanced javascript MULT-213. 
+This project was created to take JSON data and turn it into a website. This was used as practice for my class on advanced javascript MULT-213. Probably not the most functionally correct or optimized code, but it works. 😎
 
 It uses the following languages:
 
 - HTML
 - CSS
-- Javascript
+- Javascript (Vanilla)
 - JSON
 
 Many people want to find important stats about their pokemon quickly. Often these stats are hidden form the player in game or are hard to find through game interface. This Pokemon wesbite is designed to display important stats about your pokemon without having to guess.
